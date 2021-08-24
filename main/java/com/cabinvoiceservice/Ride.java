@@ -1,8 +1,10 @@
 package com.cabinvoiceservice;
 
 public class Ride {
-    public int time;
-    public double distance;
+    private int time;
+    private double distance;
+    private boolean isPremium;
+
 
     public Ride(double distance, int time) {
         this.distance = distance;
@@ -15,5 +17,21 @@ public class Ride {
                 "time=" + time +
                 ", distance=" + distance +
                 '}';
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public boolean isPremium() {
+        return isPremium;
+    }
+
+    public void setPremium(boolean premium) {
+        isPremium = premium;
     }
 }

@@ -3,8 +3,6 @@ package com.cabinvoiceservice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.net.PortUnreachableException;
 import java.util.List;
 
 public class InvoiceServiceTest {
@@ -18,16 +16,16 @@ public class InvoiceServiceTest {
     public void givenDistanceAndTime_ShouldReturnTotalFare() {
         double distance = 8.0;
         int time = 12;
-        double fare = invoiceService.calculateFare(distance, time);
-        Assertions.assertEquals(92, fare, 0.0);
+        double fare = invoiceService.calculateFare(distance, time, true);
+        Assertions.assertEquals(144, fare, 0.0);
     }
 
     @Test
     public void givenLessDistanceOrTime_ShouldReturnMinFare() {
         double distance = 0.2;
         int time = 2;
-        double totalFare = invoiceService.calculateFare(distance, time);
-        Assertions.assertEquals(5, totalFare, 0.0);
+        double totalFare = invoiceService.calculateFare(distance, time, true);
+        Assertions.assertEquals(20, totalFare, 0.0);
     }
 
     @Test
