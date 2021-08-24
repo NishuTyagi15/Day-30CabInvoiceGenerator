@@ -8,10 +8,7 @@ public class InvoiceService {
 
     public double calculateFare(double distance, int time) {
         double totalFare = distance * MINCOSTPERKM + time * COSTPERTIME;
-        if(totalFare < MINFARE) {
-            return MINFARE;
-        }
-        return totalFare;
+        return Math.max(totalFare, MINFARE);
     }
 
     public double calculateFare(Ride[] rides) {
