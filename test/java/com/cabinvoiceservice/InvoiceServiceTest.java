@@ -13,7 +13,7 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenDistanceAndTime_ShouldReturnTotalFare() {
+    public void givenDistanceAndTime_ShouldReturnTotalPremiumFare() {
         double distance = 8.0;
         int time = 12;
         double fare = invoiceService.calculateFare(distance, time, true);
@@ -21,11 +21,27 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenLessDistanceOrTime_ShouldReturnMinFare() {
+    public void givenDistanceAndTime_ShouldReturnTotalNormalFare() {
+        double distance = 8.0;
+        int time = 12;
+        double fare = invoiceService.calculateFare(distance, time, false);
+        Assertions.assertEquals(92, fare, 0.0);
+    }
+
+    @Test
+    public void givenLessDistanceOrTime_ShouldReturnPremiumMinFare() {
         double distance = 0.2;
         int time = 2;
         double totalFare = invoiceService.calculateFare(distance, time, true);
         Assertions.assertEquals(20, totalFare, 0.0);
+    }
+
+    @Test
+    public void givenLessDistanceOrTime_ShouldReturnNormalMinFare() {
+        double distance = 0.2;
+        int time = 2;
+        double totalFare = invoiceService.calculateFare(distance, time, false);
+        Assertions.assertEquals(5, totalFare, 0.0);
     }
 
     @Test
